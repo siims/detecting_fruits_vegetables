@@ -1,6 +1,6 @@
 # Detecting fruits from images intelligently
 
-# setup and run
+## Setup and run
 ```
 virtualenv env # assuming python 3, create virtualenv called env
 env/bin/pip install -r requirements.txt # install requirements
