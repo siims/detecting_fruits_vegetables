@@ -39,8 +39,8 @@ def google_vision_api_request(image):
     payload = {'requests': [{'image': {'content': to_base64(image)}, 'features': [{'type': 'LABEL_DETECTION'}]}]}
     request = requests.post(GOOGLE_VISION_API_URL, json=payload)
     if request.status_code is not 200:
-        print('Request failed to', Source.google_vision_api, request.status_code, request.reason)
-        return None
+        raise RuntimeError('Could not fetch image labels from %s with code %d.\n\tReason: %s' % (
+        Source.google_vision_api.name, request.status_code, request.reason))
 
     return request.json()
 
@@ -55,9 +55,12 @@ def parse_response(results) -> List[Label]:
 def get_results_for_images(images) -> List[Result]:
     results = []
     for image in images:
-        json_response = google_vision_api_request(image)
-        labels = parse_response(json_response)
-        results.append(Result(os.path.split(image.filename)[1], labels))
+        try:
+            json_response = google_vision_api_request(image)
+            labels = parse_response(json_response)
+            results.append(Result(os.path.split(image.filename)[1], labels))
+        except Exception as e:
+            print(e)
     return results
 
 
