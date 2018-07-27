@@ -5,9 +5,9 @@ from io import BytesIO
 import requests
 from typing import List
 
-from Label import Label
-from Result import Result
-from Source import Source
+from models import Label
+from models import Result
+from models import Source
 
 GOOGLE_VISION_API_URL = 'https://cxl-services.appspot.com/proxy?url=https://vision.googleapis.com/v1/images:annotate'
 

@@ -6,7 +6,7 @@ from PIL import Image
 from typing import List
 
 import google_vision
-from Source import Source
+from models import Source
 
 
 def collect_images() -> List[Image.Image]:
