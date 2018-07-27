@@ -7,7 +7,9 @@ from typing import List
 
 from Label import Label
 from Result import Result
-from main import GOOGLE_VISION_API_URL, Source
+from Source import Source
+
+GOOGLE_VISION_API_URL = 'https://cxl-services.appspot.com/proxy?url=https://vision.googleapis.com/v1/images:annotate'
 
 
 def google_vision_api_request(image):

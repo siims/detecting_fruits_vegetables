@@ -3,17 +3,10 @@ import os
 from datetime import datetime
 
 from PIL import Image
-from enum import Enum
 from typing import List
 
 import google_vision
-
-GOOGLE_VISION_API_URL = 'https://cxl-services.appspot.com/proxy?url=https://vision.googleapis.com/v1/images:annotate'
-
-
-class Source(Enum):
-    google_vision_api = 1
-    amazon_rekognition_api = 2
+from Source import Source
 
 
 def collect_images() -> List[Image.Image]:
